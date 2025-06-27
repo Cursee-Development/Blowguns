@@ -16,10 +16,10 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.cursee.examplemod.ExampleModFabric"
+            "com.cursee.blowguns.BlowgunsFabric"
         ],
         "client": [
-            "com.cursee.examplemod.ExampleModClientFabric"
+            "com.cursee.blowguns.BlowgunsClientFabric"
         ]
     },
     "mixins": [
@@ -30,8 +30,7 @@
         "fabricloader": ">=0.14",
         "fabric": "*",
         "minecraft": "${fabric_minecraft_version_range}",
-        "java": ">=${java_version}",
-        "monolib": ">=2.1.0"
+        "java": ">=${java_version}"
     },
     "suggests": {
         "another-mod": "*"
