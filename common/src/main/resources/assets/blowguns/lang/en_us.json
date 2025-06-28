@@ -1,0 +1,31 @@
+{
+  "itemGroup.blowguns": "Blowguns",
+  "item.blowguns.blowgun": "Bamboo Blowgun",
+  "item.blowguns.dart": "Bamboo Dart",
+
+  "item.blowguns.tipped_dart": "Tipped Dart",
+  "item.blowguns.tipped_dart.effect.awkward": "Tipped Dart",
+  "item.blowguns.tipped_dart.effect.empty": "Uncraftable Tipped Dart",
+  "item.blowguns.tipped_dart.effect.fire_resistance": "Dart of Fire Resistance",
+  "item.blowguns.tipped_dart.effect.harming": "Dart of Harming",
+  "item.blowguns.tipped_dart.effect.healing": "Dart of Healing",
+  "item.blowguns.tipped_dart.effect.invisibility": "Dart of Invisibility",
+  "item.blowguns.tipped_dart.effect.leaping": "Dart of Leaping",
+  "item.blowguns.tipped_dart.effect.levitation": "Dart of Levitation",
+  "item.blowguns.tipped_dart.effect.luck": "Dart of Luck",
+  "item.blowguns.tipped_dart.effect.mundane": "Tipped Dart",
+  "item.blowguns.tipped_dart.effect.night_vision": "Dart of Night Vision",
+  "item.blowguns.tipped_dart.effect.poison": "Dart of Poison",
+  "item.blowguns.tipped_dart.effect.regeneration": "Dart of Regeneration",
+  "item.blowguns.tipped_dart.effect.slow_falling": "Dart of Slow Falling",
+  "item.blowguns.tipped_dart.effect.slowness": "Dart of Slowness",
+  "item.blowguns.tipped_dart.effect.strength": "Dart of Strength",
+  "item.blowguns.tipped_dart.effect.swiftness": "Dart of Swiftness",
+  "item.blowguns.tipped_dart.effect.thick": "Tipped Dart",
+  "item.blowguns.tipped_dart.effect.turtle_master": "Dart of the Turtle Master",
+  "item.blowguns.tipped_dart.effect.water": "Dart of Splashing",
+  "item.blowguns.tipped_dart.effect.water_breathing": "Dart of Water Breathing",
+  "item.blowguns.tipped_dart.effect.weakness": "Dart of Weakness",
+  
+  "projectile.blowguns.dart": "Dart"
+}

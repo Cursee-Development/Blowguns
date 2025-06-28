@@ -6,6 +6,7 @@ public class BlowgunsClientFabric implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-
+        BlowgunsClient.init();
+        BlowgunsClient.setup();
     }
 }

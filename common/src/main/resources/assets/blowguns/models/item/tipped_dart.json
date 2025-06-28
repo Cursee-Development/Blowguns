@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blowguns:item/tipped_dart_head",
+    "layer1": "blowguns:item/tipped_dart_base"
+  }
+}

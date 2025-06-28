@@ -1,5 +1,17 @@
 package com.cursee.blowguns.platform.services;
 
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.level.Level;
+
+import java.security.cert.CertPathBuilder;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public interface IPlatformHelper {
 
     /**
@@ -47,4 +59,14 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    CreativeModeTab.Builder createTabBuilder();
+
+    <T extends Entity> EntityType.Builder<T> createEntityType(BiFunction<EntityType<T>, Level, T> constructor, MobCategory category);
+
+    <E extends Entity, T extends EntityType<E>, R extends EntityRenderer<E>> void registerEntityRenderer(T entityType, Function<EntityRendererProvider.Context, R> entityRendererConstructor);
+
+    void registerTippedDartItemColoring();
+
+    void registerTippedDartRecipeSerializer();
 }
