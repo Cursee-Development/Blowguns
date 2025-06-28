@@ -159,6 +159,8 @@ public class Dart extends AbstractArrow {
             this.effects.clear();
             this.entityData.set(ID_EFFECT_COLOR, NO_EFFECT_COLOR);
         }
+
+        if (this.inGround && this.inGroundTime >= 100) this.discard(); // discard after 5 seconds (5 * 20 ticks per second)
     }
 
     @Override
