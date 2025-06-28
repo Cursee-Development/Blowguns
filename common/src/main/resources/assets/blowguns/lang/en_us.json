@@ -27,5 +27,14 @@
   "item.blowguns.tipped_dart.effect.water_breathing": "Dart of Water Breathing",
   "item.blowguns.tipped_dart.effect.weakness": "Dart of Weakness",
   
-  "projectile.blowguns.dart": "Dart"
+  "projectile.blowguns.dart": "Dart",
+
+  "enchantment.blowguns.extra_breath": "Extra Breath",
+  "enchantment.blowguns.extra_breath.desc": "Each level provides an additional shot when using a blowgun!",
+
+  "enchantment.blowguns.quick_breath": "Quick Breath",
+  "enchantment.blowguns.quick_breath.desc": "Each level removes 33.33% from charge time to shoot a dart!",
+
+  "enchantment.blowguns.focused_breath": "Focused Breath",
+  "enchantment.blowguns.focused_breath.desc": "Each level removes 33.33% inaccuracy from shooting a dart!"
 }

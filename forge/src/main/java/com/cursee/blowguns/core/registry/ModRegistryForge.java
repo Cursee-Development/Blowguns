@@ -2,6 +2,7 @@ package com.cursee.blowguns.core.registry;
 
 import com.cursee.blowguns.BlowgunsForge;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -15,6 +16,7 @@ public class ModRegistryForge {
 
     public static void register(final IEventBus modEventBus) {
         bind(Registries.ITEM, ModItems::register);
+        bind(Registries.ENCHANTMENT, ModEnchantments::register);
         bind(Registries.CREATIVE_MODE_TAB, ModTabs::register);
         bind(Registries.ENTITY_TYPE, ModEntities::register);
     }

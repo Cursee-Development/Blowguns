@@ -11,6 +11,7 @@ public class ModRegistryFabric {
 
     public static void register() {
         bind(BuiltInRegistries.ITEM, ModItems::register);
+        bind(BuiltInRegistries.ENCHANTMENT, ModEnchantments::register);
         bind(BuiltInRegistries.CREATIVE_MODE_TAB, ModTabs::register);
         bind(BuiltInRegistries.ENTITY_TYPE, ModEntities::register);
     }
