@@ -1,12 +1,13 @@
 package com.cursee.blowguns.core.world.item.enchantment;
 
+import com.cursee.blowguns.core.util.EnchantmentCanApply;
 import com.cursee.blowguns.core.world.item.BlowgunItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
-public class FocusedBreathEnchantment extends Enchantment {
+public class FocusedBreathEnchantment extends Enchantment implements EnchantmentCanApply {
 
     public FocusedBreathEnchantment(Rarity rarity, EquipmentSlot... applicableSlots) {
         super(rarity, EnchantmentCategory.BREAKABLE, applicableSlots);
@@ -25,6 +26,11 @@ public class FocusedBreathEnchantment extends Enchantment {
     }
 
     public boolean canEnchant(ItemStack stack) {
-        return stack.getItem() instanceof BlowgunItem || super.canEnchant(stack);
+        return stack.getItem() instanceof BlowgunItem;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        return canEnchant(stack);
     }
 }

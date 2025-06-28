@@ -23,6 +23,7 @@ public class ModTabs {
             .title(Component.translatable("itemGroup.blowguns"))
             .displayItems((itemDisplayParameters, output) -> {
                 output.accept(ModItems.BLOWGUN);
+                output.accept(ModItems.DART_POUCH);
                 output.accept(ModItems.DART);
                 itemDisplayParameters.holders().lookup(Registries.POTION).ifPresent((lookup) -> generatePotionEffectTypes(output, lookup, ModItems.TIPPED_DART));
             }).build();

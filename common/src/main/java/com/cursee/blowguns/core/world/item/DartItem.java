@@ -19,6 +19,4 @@ public class DartItem extends Item {
         dart.setEffectsFromItem(stack);
         return dart;
     }
-
-
 }
