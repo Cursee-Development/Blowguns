@@ -2,27 +2,40 @@ package com.cursee.blowguns.core.world.entity.projectile;
 
 import com.cursee.blowguns.core.registry.ModEntities;
 import com.cursee.blowguns.core.registry.ModItems;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.Vec3;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
 
@@ -39,18 +52,21 @@ public class Dart extends AbstractArrow {
 
     public Dart(EntityType<? extends AbstractArrow> entityType, Level level) {
         super(entityType, level);
+        this.setBaseDamage(1.0D);
         this.potion = Potions.EMPTY;
         this.effects = Sets.newHashSet();
     }
 
     public Dart(double x, double y, double z, Level level) {
         super(ModEntities.DART, x, y, z, level);
+        this.setBaseDamage(1.0D);
         this.potion = Potions.EMPTY;
         this.effects = Sets.newHashSet();
     }
 
     public Dart(LivingEntity livingEntity, Level level) {
         super(ModEntities.DART, livingEntity, level);
+        this.setBaseDamage(1.0D);
         this.potion = Potions.EMPTY;
         this.effects = Sets.newHashSet();
     }
@@ -247,6 +263,10 @@ public class Dart extends AbstractArrow {
             this.effects.clear();
             this.entityData.set(ID_EFFECT_COLOR, NO_EFFECT_COLOR);
         }
-
     }
+
+    protected void onHitEntity(EntityHitResult result) {
+        super.onHitEntity(result);
+    }
+
 }

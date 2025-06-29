@@ -1,6 +1,7 @@
 package com.cursee.blowguns.mixin;
 
 import com.cursee.blowguns.core.util.EnchantmentCanApply;
+import com.cursee.blowguns.core.world.item.BlowgunItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -43,24 +44,26 @@ public class EnchantmentHelperMixin {
 
     @Inject(method = "getAvailableEnchantmentResults", at = @At("HEAD"), cancellable = true)
     private static void cursee$overrideAvailableEnchantments(int level, ItemStack stack, boolean allowTreasure, CallbackInfoReturnable<List<EnchantmentInstance>> cir) {
-        List<EnchantmentInstance> list = new ArrayList<>();
-        boolean isBook = stack.is(Items.BOOK);
+        if (stack.getItem() instanceof BlowgunItem) {
+            List<EnchantmentInstance> list = new ArrayList<>();
+            boolean isBook = stack.is(Items.BOOK);
 
-        for (Enchantment enchantment : BuiltInRegistries.ENCHANTMENT) {
-            boolean allow = (!enchantment.isTreasureOnly() || allowTreasure)
-                    && enchantment.isDiscoverable()
-                    && (((EnchantmentCanApply)(Object)enchantment).canApplyAtEnchantingTable(stack) || isBook);
+            for (Enchantment enchantment : BuiltInRegistries.ENCHANTMENT) {
+                boolean allow = (!enchantment.isTreasureOnly() || allowTreasure)
+                        && enchantment.isDiscoverable()
+                        && (((EnchantmentCanApply) (Object) enchantment).canApplyAtEnchantingTable(stack) || isBook);
 
-            if (!allow) continue;
+                if (!allow) continue;
 
-            for (int i = enchantment.getMaxLevel(); i >= enchantment.getMinLevel(); --i) {
-                if (level >= enchantment.getMinCost(i) && level <= enchantment.getMaxCost(i)) {
-                    list.add(new EnchantmentInstance(enchantment, i));
-                    break;
+                for (int i = enchantment.getMaxLevel(); i >= enchantment.getMinLevel(); --i) {
+                    if (level >= enchantment.getMinCost(i) && level <= enchantment.getMaxCost(i)) {
+                        list.add(new EnchantmentInstance(enchantment, i));
+                        break;
+                    }
                 }
             }
-        }
 
-        cir.setReturnValue(list); // ⬅️ Prevent original method from executing
+            cir.setReturnValue(list); // prevents original method from executing
+        }
     }
 }

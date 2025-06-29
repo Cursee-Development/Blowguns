@@ -29,6 +29,7 @@ import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraft.world.level.Level;
 
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -94,18 +95,13 @@ public class FabricPlatformHelper implements IPlatformHelper {
 
         AtomicReference<ItemStack> atomicCopy = new AtomicReference<>(ItemStack.EMPTY);
         TrinketsApi.getTrinketComponent(entity).ifPresent(component -> {
-//            component.forEach((slotReference, pouchStack) -> {
-//                if (pouchStack.getItem() instanceof DartPouchItem) {
-//                    Optional<ItemStack> optional = DartPouchItem.removeOne(pouchStack);
-//                    optional.ifPresent(atomicCopy::set);
-//                }
-//            });
-//            ItemStack pouchStack = component.getAllEquipped().get(0).getB();
-//            if (pouchStack.getItem() instanceof DartPouchItem) {
-//                Optional<ItemStack> optional = DartPouchItem.removeOne(pouchStack);
-//                optional.ifPresent(atomicCopy::set);
-//                DartPouchItem.add(pouchStack, atomicCopy.get());
-//            }
+
+            ItemStack pouchStack = component.getAllEquipped().get(0).getB();
+            if (pouchStack.getItem() instanceof DartPouchItem) {
+                Optional<ItemStack> optional = DartPouchItem.removeOne(pouchStack);
+                optional.ifPresent(atomicCopy::set);
+                DartPouchItem.add(pouchStack, atomicCopy.get());
+            }
         });
 
         return atomicCopy.get();
@@ -115,31 +111,27 @@ public class FabricPlatformHelper implements IPlatformHelper {
     public void removeDartFromAdditionalSlot(LivingEntity entity) {
         AtomicReference<ItemStack> atomicCopy = new AtomicReference<>(ItemStack.EMPTY);
         TrinketsApi.getTrinketComponent(entity).ifPresent(component -> {
-            component.forEach((slotReference, pouchStack) -> {
-                if (pouchStack.getItem() instanceof DartPouchItem) {
-                    Optional<ItemStack> optional = DartPouchItem.removeOne(pouchStack);
-                    optional.ifPresent(stack -> {
-                        if ((!(entity instanceof Player player && player.getAbilities().instabuild))) stack.shrink(1);
-                        atomicCopy.set(stack);
-                    });
-                    DartPouchItem.add(pouchStack, atomicCopy.get());
-                }
-            });
 
-
-            if (component.getAllEquipped().get(0).getB().getItem() instanceof DartPouchItem) {
-                Optional<ItemStack> optional = DartPouchItem.removeOne(component.getAllEquipped().get(0).getB());
+            if (component.getEquipped(ModItems.DART_POUCH).get(0).getB().getItem() instanceof DartPouchItem) {
+                Optional<ItemStack> optional = DartPouchItem.removeOne(component.getEquipped(ModItems.DART_POUCH).get(0).getB());
                 optional.ifPresent(stack -> {
                     if ((!(entity instanceof Player player && player.getAbilities().instabuild))) stack.shrink(1);
                     atomicCopy.set(stack);
                 });
-                DartPouchItem.add(component.getAllEquipped().get(0).getB(), atomicCopy.get());
+                DartPouchItem.add(component.getEquipped(ModItems.DART_POUCH).get(0).getB(), atomicCopy.get());
             }
         });
     }
 
     @Override
     public boolean hasDartPouchInAdditionalSlot(LivingEntity entity) {
-        return false;
+
+        AtomicBoolean foundPouch = new AtomicBoolean(false);
+
+        TrinketsApi.getTrinketComponent(entity).ifPresent(component -> {
+            if (!component.getEquipped(ModItems.DART_POUCH).isEmpty()) foundPouch.set(true);
+        });
+
+        return foundPouch.get();
     }
 }

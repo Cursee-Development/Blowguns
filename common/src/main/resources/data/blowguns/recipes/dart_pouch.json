@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "D": {
+      "item": "blowguns:dart"
+    }
+  },
+  "pattern": [
+    " S ",
+    "DLD",
+    " D "
+  ],
+  "result": {
+    "item": "blowguns:dart_pouch"
+  },
+  "show_notification": true
+}

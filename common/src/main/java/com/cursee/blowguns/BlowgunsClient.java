@@ -18,12 +18,4 @@ public class BlowgunsClient {
     public static void setup() {
         Services.PLATFORM.registerEntityRenderer(ModEntities.DART, DartRenderer::new);
     }
-
-//    private static <T extends Item> void registerDartPouchProperties(T item) {
-//
-//
-//        ItemProperties.register(Items.BUNDLE, new ResourceLocation("filled"), (p_174625_, p_174626_, p_174627_, p_174628_) -> {
-//            return BundleItem.getFullnessDisplay(p_174625_);
-//        });
-//    }
 }
