@@ -28,7 +28,9 @@
   "item.blowguns.tipped_dart.effect.water_breathing": "Dart of Water Breathing",
   "item.blowguns.tipped_dart.effect.weakness": "Dart of Weakness",
   
-  "projectile.blowguns.dart": "Dart",
+  "projectile.blowguns.dart": "Bamboo Dart",
+  "entity.blowguns.dart": "Bamboo Dart",
+  "entity.blowguns.tipped_dart": "Tipped Dart",
 
   "enchantment.blowguns.extra_breath": "Extra Breath",
   "enchantment.blowguns.extra_breath.desc": "Each level provides an additional shot when using a blowgun!",
